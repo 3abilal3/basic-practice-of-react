@@ -28,9 +28,9 @@ function InputBox({
         onChange={(e) => onCurrencyChange(e.target.value)}
         className="border-t border-b border-gray-300 bg-white text-gray-700 rounded-r-md focus:outline-none focus:ring focus:ring-blue-500 w-1/3" // Adjust the width here
       >
-        {currencyOptions.map((option, index) => (
-          <option key={index} value={option}>
-            {option}
+        {currencyOptions.map((currency, index) => (
+          <option key={index} value={currency}>
+            {currency}
           </option>
         ))}
       </select>

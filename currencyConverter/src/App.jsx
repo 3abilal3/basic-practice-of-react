@@ -362,8 +362,8 @@ function App() {
           <InputBox
             label="From"
             amount={parseFloat(amount.toFixed(4))}
-            currencyOptions={fullNameOptions}
-            onCurrencyChange={setFrom}
+            currencyOptions={Object.keys(currencyFullNames)}
+            onCurrencyChange={setFrom}  
             selectCurrency={from}
             onAmountChange={setAmount}
           />
@@ -381,7 +381,7 @@ function App() {
           <InputBox
             label="To"
             amount={parseFloat(convertedAmount.toFixed(4))}
-            currencyOptions={fullNameOptions}
+            currencyOptions={Object.keys(currencyFullNames)}
             onCurrencyChange={setTo}
             selectCurrency={to}
             amountDisable
