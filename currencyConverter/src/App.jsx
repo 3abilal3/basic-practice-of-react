@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import InputBox from './components/InputBox';
 import useCurrencyInfo from './hooks/useCurrencyInfo';
 import bgPic from './assets/49066.jpg';
+
+
 function App() {
   const [amount, setAmount] = useState(1);
   const [from, setFrom] = useState("pkr");
   const [to, setTo] = useState("usd");
   const [convertedAmount, setConvertedAmount] = useState(0);
+ 
   const currencyFullNames = {
     "1000sats": "1000 Satoshis",
     "1inch": "1inch Network",
@@ -318,13 +321,11 @@ function App() {
     "zmw": "Zambian Kwacha",
     "zwl": "Zimbabwean Dollar"
   };
-  
   const currencyInfo = useCurrencyInfo(from);
   const options = Object.keys(currencyInfo);
     
-    const fullNameOptions = options.map(shortcut => currencyFullNames[shortcut] || shortcut);
+   
 
-    console.log(fullNameOptions);
     
   const convert = () => {
     if (currencyInfo[to]) {
@@ -362,10 +363,11 @@ function App() {
           <InputBox
             label="From"
             amount={parseFloat(amount.toFixed(4))}
-            currencyOptions={Object.keys(currencyFullNames)}
+            currencyOptions={options}
             onCurrencyChange={setFrom}  
             selectCurrency={from}
             onAmountChange={setAmount}
+            currencyFullNames={currencyFullNames} 
           />
         </div>
         <div className="relative w-full flex justify-center mb-4">
@@ -381,10 +383,11 @@ function App() {
           <InputBox
             label="To"
             amount={parseFloat(convertedAmount.toFixed(4))}
-            currencyOptions={Object.keys(currencyFullNames)}
+            currencyOptions={options}
             onCurrencyChange={setTo}
             selectCurrency={to}
             amountDisable
+            currencyFullNames={currencyFullNames} 
           />
         </div>
         <button
